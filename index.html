@@ -2,80 +2,240 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Mac's Sandwichería</title>
   <style>
-    .pagina {
-      background-color: #fff4e0;
-      font-family: Georgia, serif;
-      text-align: center;
-      padding: 20px;
-      border: 6px double #c8102e;
-    }
-    .cuadros {
-      height: 30px;
-      background: repeating-conic-gradient(#1a1a1a 0% 25%, #fff4e0 0% 50%) 0 0 / 30px 30px;
-      margin-bottom: 16px;
-    }
-    h1 {
-      font-family: "Brush Script MT", cursive;
-      color: #c8102e;
-      font-size: 48px;
-      text-shadow: 3px 3px 0 #2bb3b1;
-      margin: 10px 0;
-    }
-    h2 {
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background: #fff4e0;
       color: #1a1a1a;
-      border-bottom: 3px dotted #2bb3b1;
-      display: table;
-      margin: 20px auto 10px;
-      padding-bottom: 4px;
+      font-family: Georgia, serif;
+      padding-bottom: 80px;
     }
-    ul {
-      list-style: none;
-      padding: 0;
+    section { padding: 36px 24px; }
+    h1 { font-size: 72px; line-height: 1; margin: 8px 0; }
+    h2 { font-size: 32px; margin: 8px 0 12px; }
+    h3 { font-size: 22px; margin: 10px 0 8px; }
+    .cursiva {
+      display: block;
+      font-family: "Brush Script MT", cursive;
+      font-weight: normal;
+      font-size: 52px;
+      color: #c8102e;
+      text-shadow: 3px 3px 0 #2bb3b1;
     }
-    li {
-      margin: 8px 0;
+    .etiqueta {
+      font-family: "Courier New", monospace;
+      font-size: 12px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #c8102e;
     }
+    .lema { color: #c8102e; font-style: italic; font-size: 20px; }
+    .foto {
+      height: 240px;
+      background: linear-gradient(135deg, #c8102e, #1a1a1a);
+      color: #fff4e0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      letter-spacing: 2px;
+    }
+    .foto.chica { height: 130px; }
     .boton {
       display: inline-block;
-      background-color: #c8102e;
-      color: #fff4e0;
-      padding: 12px 24px;
+      padding: 12px 22px;
       border-radius: 30px;
       text-decoration: none;
-      font-size: 18px;
-      margin: 6px;
+      font-family: "Courier New", monospace;
+      font-size: 13px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      margin: 6px 6px 6px 0;
+    }
+    .negro { background: #1a1a1a; color: #fff4e0; }
+    .rojo { background: #c8102e; color: #fff4e0; box-shadow: 4px 4px 0 #1a1a1a; }
+    .borde { border: 2px solid #1a1a1a; color: #1a1a1a; }
+    .centro { text-align: center; }
+    .cinta {
+      background: #1a1a1a;
+      color: #fff4e0;
+      overflow: hidden;
+      white-space: nowrap;
+      padding: 14px 0;
+      font-size: 22px;
+      font-style: italic;
+    }
+    .cinta-texto {
+      display: inline-block;
+      animation: mover 25s linear infinite;
+    }
+    .cinta span { margin: 0 16px; }
+    .cinta span:nth-child(even) { color: #c8102e; }
+    @keyframes mover {
+      from { transform: translateX(0); }
+      to { transform: translateX(-50%); }
+    }
+    .carrusel {
+      display: flex;
+      gap: 16px;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      padding-bottom: 12px;
+    }
+    .tarjeta {
+      flex: 0 0 85%;
+      scroll-snap-align: start;
+      background: #fffaf0;
+      border: 2px solid #1a1a1a;
+      padding: 14px;
+    }
+    .item {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      border-bottom: 1px dotted #2bb3b1;
+      padding: 8px 0;
+    }
+    .precio { color: #c8102e; font-weight: bold; }
+    .nota { font-style: italic; color: #555555; }
+    .fila { border-bottom: 1px dotted #2bb3b1; padding: 12px 0; }
+    footer { background: #1a1a1a; color: #fff4e0; padding: 36px 24px; }
+    footer a { display: block; color: #fff4e0; margin: 8px 0; font-style: italic; font-size: 20px; }
+    footer .etiqueta { color: #2bb3b1; }
+    .fijo {
+      position: fixed;
+      left: 16px;
+      right: 16px;
+      bottom: 12px;
+      background: #c8102e;
+      color: #fff4e0;
+      text-align: center;
+      padding: 14px;
+      border-radius: 30px;
+      text-decoration: none;
       box-shadow: 4px 4px 0 #1a1a1a;
+      font-family: "Courier New", monospace;
+      font-size: 13px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
     }
   </style>
 </head>
 <body>
-  <div class="pagina">
-    <div class="cuadros"></div>
-    <h1>Mac's Sandwichería</h1>
-    <p><em>Donde el sabor nunca pasa de moda</em></p>
-    <h2>Nuestra carta</h2>
-    <ul>
-      <li>Pastas frescas y caseras</li>
-      <li>Empanadas</li>
-      <li>Pizzas</li>
-      <li>Sándwiches fríos y calientes</li>
-      <li>Pollo a la mostaza con ensalada rusa</li>
-      <li>Napolitana con papas españolas</li>
-    </ul>
-    <h2>Dónde estamos</h2>
-    <p>Corrientes esquina Florida, zona Macro Centro, Salta capital</p>
-    <a class="boton" href="https://www.google.com/maps/search/?api=1&query=Corrientes+y+Florida+Salta+Argentina">Ver en el mapa</a>
-    <h2>Horarios</h2>
-    <p>Lunes a domingo</p>
-    <ul>
-      <li>de 08:00 a 14:00</li>
-      <li>de 16:00 a 23:00</li>
-    </ul>
-    <h2>Reservas y pedidos</h2>
-    <a class="boton" href="https://wa.me/5493875528143">Escribinos por WhatsApp</a>
-    <div class="cuadros" style="margin-top: 16px;"></div>
+  <div class="foto">ACÁ VA TU FOTO</div>
+
+  <section id="inicio">
+    <p class="etiqueta">Desde el barrio</p>
+    <h1>Mac's <span class="cursiva">Sandwichería</span></h1>
+    <p class="lema">Donde el sabor nunca pasa de moda</p>
+    <p>Pizzas, empanadas, sándwiches y menús con pastas caseras.</p>
+    <a class="boton negro" href="#carta">Ver la carta</a>
+    <a class="boton borde" href="https://wa.me/5493875528143">Pedir por WhatsApp</a>
+  </section>
+
+  <p class="etiqueta centro">Pizzas · Sandwichería · Empanadas · Menú</p>
+  <div class="cinta">
+    <div class="cinta-texto">
+      <span>Pizzas</span><span>✱</span>
+      <span>Sandwichería</span><span>✱</span>
+      <span>Empanadas</span><span>✱</span>
+      <span>Menú con postre incluido</span><span>✱</span>
+      <span>Pizzas</span><span>✱</span>
+      <span>Sandwichería</span><span>✱</span>
+      <span>Empanadas</span><span>✱</span>
+      <span>Menú con postre incluido</span><span>✱</span>
+    </div>
   </div>
+
+  <section id="carta">
+    <p class="etiqueta">La carta</p>
+    <h2>Nuestra carta</h2>
+    <p class="etiqueta">4 secciones · Deslizá para recorrer</p>
+    <div class="carrusel">
+
+      <div class="tarjeta">
+        <div class="foto chica">FOTO</div>
+        <h3>Pizzas</h3>
+        <div class="item"><span>Común</span><span class="precio">$10.000</span></div>
+        <div class="item"><span>Especial</span><span class="precio">$12.000</span></div>
+        <div class="item"><span>Napolitana</span><span class="precio">$12.000</span></div>
+        <div class="item"><span>Fugazzeta</span><span class="precio">$12.000</span></div>
+        <div class="item"><span>Jamón crudo y rúcula</span><span class="precio">$15.000</span></div>
+        <div class="item"><span>Con tomate confitado</span><span class="precio">$18.000</span></div>
+      </div>
+
+      <div class="tarjeta">
+        <div class="foto chica">FOTO</div>
+        <h3>Sandwichería</h3>
+        <div class="item"><span>Hamburguesa</span><span class="precio">$10.000</span></div>
+        <div class="item"><span>Lomito</span><span class="precio">$12.000</span></div>
+        <div class="item"><span>Milanesa de carne</span><span class="precio">$12.000</span></div>
+        <div class="item"><span>Milanesa de pollo</span><span class="precio">$12.000</span></div>
+      </div>
+
+      <div class="tarjeta">
+        <div class="foto chica">FOTO</div>
+        <h3>Empanadas</h3>
+        <div class="item"><span>Carne picada</span><span class="precio">$15.000</span></div>
+        <div class="item"><span>Pollo</span><span class="precio">$15.000</span></div>
+        <div class="item"><span>Bondiola</span><span class="precio">$15.000</span></div>
+        <div class="item"><span>Osobuco</span><span class="precio">$15.000</span></div>
+        <div class="item"><span>Queso</span><span class="precio">$12.000</span></div>
+        <div class="item"><span>Caprese</span><span class="precio">$12.000</span></div>
+      </div>
+
+      <div class="tarjeta">
+        <div class="foto chica">FOTO</div>
+        <h3>Menú <span class="precio">$5.000</span></h3>
+        <p class="nota">Todos los menús incluyen postre variado.</p>
+        <div class="item"><span>Pollo al horno con ensalada rusa o papas españolas</span></div>
+        <div class="item"><span>Napolitana con papas españolas</span></div>
+        <div class="item"><span>Cupé con arroz primaveral</span></div>
+        <div class="item"><span>Pastel de papa</span></div>
+        <div class="item"><span>Pastas caseras: sorrentinos o ravioles de pollo y espinaca o de ricota y espinaca, o fideo largo</span></div>
+        <p class="nota">Las pastas, a elección con salsa de osobuco, blanca o de pollo.</p>
+      </div>
+
+    </div>
+  </section>
+
+  <section id="pedidos">
+    <p class="etiqueta">Reservas y pedidos</p>
+    <h2>Escribinos <em>y lo tenemos listo</em></h2>
+    <p>Pedidos, reservas y consultas por WhatsApp. Hacemos delivery.</p>
+    <a class="boton rojo" href="https://wa.me/5493875528143">Escribinos por WhatsApp</a>
+    <p class="etiqueta">Formas de pago</p>
+    <div class="fila">Efectivo</div>
+    <div class="fila">Transferencia</div>
+  </section>
+
+  <section id="donde">
+    <p class="etiqueta">Dónde y cuándo</p>
+    <h2>Corrientes 705</h2>
+    <p>Salta capital</p>
+    <a class="boton negro" href="https://www.google.com/maps/search/?api=1&query=Corrientes+705+Salta+Argentina">Ver en el mapa</a>
+    <p class="etiqueta">Horarios de atención</p>
+    <div class="fila">10:00 a 14:00</div>
+    <div class="fila">19:00 a 00:00</div>
+  </section>
+
+  <footer>
+    <h2>Mac's <span class="cursiva">Sandwichería</span></h2>
+    <p><em>Donde el sabor nunca pasa de moda.</em></p>
+    <p class="etiqueta">Enlaces</p>
+    <a href="#carta">Carta</a>
+    <a href="#pedidos">Pedidos y pagos</a>
+    <a href="#donde">Dónde estamos</a>
+    <p class="etiqueta">Contacto</p>
+    <p>WhatsApp: +54 9 387 552 8143</p>
+    <p>Corrientes 705, Salta capital</p>
+    <p>Horarios: 10:00 a 14:00 y 19:00 a 00:00</p>
+    <p class="etiqueta">© 2026 Mac's Sandwichería</p>
+  </footer>
+
+  <a class="fijo" href="https://wa.me/5493875528143">Pedir por WhatsApp</a>
 </body>
 </html>
